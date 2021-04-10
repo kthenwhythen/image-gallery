@@ -13,9 +13,10 @@ export default function App() {
 			const data = await res.json()
 			setImages(data.hits)
 			setIsLoading(false)
-			console.log(data)
 		}
-		fetchImages()
+		if (term) {
+			fetchImages()
+		}
 	}, [term])
 	
 	return (
