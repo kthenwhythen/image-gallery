@@ -14,14 +14,17 @@ export default function App() {
 			setImages(data.hits)
 			setIsLoading(false)
 		}
-		search && fetchImages()
+		if (search) {
+			setIsLoading(true)
+			fetchImages()
+		}
 	}, [search])
 
 	
 	const startPage = (
 		<div className="flex items-center justify-center h-screen">
 			<div>
-				<h1 className="font-chakra block text-6xl text-center w-full pb-6">Image Gallery</h1>
+				<h1 className="block text-6xl text-center w-full pb-6">Image Gallery</h1>
 				<SearchForm searchText={(text) => setSearch(text)} />
 			</div>
 		</div>
@@ -30,7 +33,7 @@ export default function App() {
 	const searchPage = (
 		<div>
 			<div>
-				<h1 className="font-chakra block text-6xl text-center w-full">Image Gallery</h1>
+				<h1 className="block text-6xl text-center w-full">Image Gallery</h1>
 				<SearchForm searchText={(text) => setSearch(text)} />
 			</div>
 			{isLoading ? <h1 className="text-6xl text-center mx-auto mt-32">Loading...</h1> : <div className="grid grid-cols-4 gap-4">
@@ -42,7 +45,7 @@ export default function App() {
 	)
 
 	return (
-		<div className="container mx-auto">
+		<div className="container mx-auto font-chakra">
 			{search ? searchPage : startPage}
 		</div>
 	)
