@@ -37,6 +37,7 @@ export default function App() {
 				</div>
 			</div>
 			{search && searchPage}
+			{!isLoading && images.length === 0 && <h1 className="text-6xl text-center mx-auto mt-32">No results</h1>}
 		</div>
 	)
 }
