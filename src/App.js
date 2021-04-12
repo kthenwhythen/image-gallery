@@ -21,7 +21,7 @@ export default function App() {
 	}, [search])
 
 	const searchPage = (
-		isLoading ? <h1 className="text-6xl text-center mx-auto mt-32">Loading...</h1> : <div className="grid grid-cols-4 gap-4 mb-6">
+		isLoading ? <h1 className="text-6xl text-center mx-auto mt-32">Loading...</h1> : <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
 			{images.map(image => (
 				<ImageCard key={image.id} image={image} />
 			))}
@@ -29,14 +29,16 @@ export default function App() {
 	)
 
 	return (
-		<div className="container mx-auto font-chakra">
+		<div className="container px-3 mx-auto font-chakra">
 			<div className={!search && 'flex items-center justify-center h-screen'}>
 				<div className={search && 'flex justify-items-start py-6'}>
-					<a href="/" className={search ? 'block text-3xl w-full' : 'block text-6xl text-center w-full pb-6'}>Image Gallery</a>
+					<a href="/" className={search ? 'block text-xl md:text-3xl w-full' : 'block text-6xl text-center w-full pb-6'}>Image Gallery</a>
 					<SearchForm searchText={(text) => setSearch(text)} />
 				</div>
 			</div>
-			{search && searchPage}
+			<div className="flex justify-center">
+				{search && searchPage}
+			</div>
 			{!isLoading && images.length === 0 && <h1 className="text-6xl text-center mx-auto mt-32">No results</h1>}
 		</div>
 	)

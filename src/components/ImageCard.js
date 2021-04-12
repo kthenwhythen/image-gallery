@@ -2,7 +2,7 @@ export default function ImageCard({ image }) {
     const tags = image.tags.split(',')
     
     return (
-        <div className="max-w-xs rounded overflow-hidden bg-gray-100">
+        <div className="rounded overflow-hidden bg-gray-100">
 			<img src={image.webformatURL} alt="" className="w-full"/>
 			<div className="px-6 py-4">
 				<div className="font-bold text-gray-800 text-xl">
